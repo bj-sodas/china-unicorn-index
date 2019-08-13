@@ -2,6 +2,7 @@ library(tidyverse)
 library(shiny)
 library(neo4r)
 library(visNetwork)
+library(glue)
 
 con <- neo4j_api$new(
     url = "http://localhost:7474",
@@ -12,12 +13,13 @@ con$ping()
 
 get_graph_components <- function(x) {
     
-    init <-
-        sprintf("MATCH (c:Company)-[r:invests_in]-(i:Investor) WHERE c.name = '%s' RETURN c, r, i;", x) %>%
+    query <-
+        glue("MATCH (c:Company)-[r:invests_in]-(i:Investor) 
+             WHERE c.name = '{x}' RETURN c, r, i;") %>%
         call_neo4j(con, type = "graph")
     
     nodes <- 
-        unnest_nodes(init$nodes) %>%
+        unnest_nodes(query$nodes) %>%
         mutate(
             label = name,
             color.background = if_else(value == "Company", "salmon", "lightblue")
@@ -25,12 +27,29 @@ get_graph_components <- function(x) {
         select(id, label, color.background)
     
     rels <- 
-        unnest_relationships(init$relationships) %>% 
+        unnest_relationships(query$relationships) %>% 
         select(from = startNode, to = endNode) %>% 
         mutate(label = "")
     
     ## return 
     list(nodes = nodes, rels = rels)
+}
+
+remove_graph_components <- function(x, nn) {
+    
+    
+    others <- glue_collapse(nn, "','")
+    
+    glue(
+        "WITH ['{others}'] as others
+        MATCH (c1:Company {{name:'{x}'}})<-[r:invests_in]-(i:Investor)
+        OPTIONAL MATCH (i)-[:invests_in]->(c2:Company)
+        WHERE c2.name in others
+        WITH i, c1, count(DISTINCT c1) + count(DISTINCT c2) as nod
+        WHERE nod = 1
+        RETURN i, nod, c1;"
+    ) %>% call_neo4j(con, type = "graph")
+    
 }
 
 
@@ -95,13 +114,16 @@ server <- function(input, output, session) {
         if (length(input$companies) < length(store())) {
             
             x <- setdiff(store(), input$companies)
+            
+            # update list last
             store(input$companies)
             message(paste("-", x))
             
-            G <- get_graph_components(x)
+            G <- remove_graph_components(x, store())
+
             visNetworkProxy("network") %>%
-                visRemoveNodes(id = G$nodes$id) %>%
-                visRemoveEdges(id = G$nodes$id)
+                 visRemoveNodes(id = G$nodes$id) %>%
+                 visRemoveEdges(id = G$nodes$id)
             
         }
         
