@@ -59,11 +59,13 @@ ui <- fluidPage(
     
     sidebarLayout(
         sidebarPanel(
-            width = 2,
-            uiOutput("selection")
+            width = 4,
+            uiOutput("selection"),
+            hr(),
+            verbatimTextOutput("edges_data_from_shiny")
         ),
         mainPanel(
-            width = 10,
+            width = 8,
             # tableOutput("text")
             visNetworkOutput("network", height = "1200px")
         )
@@ -86,9 +88,9 @@ server <- function(input, output, session) {
     
     # initial graph
     output$network <- renderVisNetwork({
-        
         G <- get_graph_components("蚂蚁金服")
-        visNetwork(G$nodes, G$rels)
+        visNetwork(G$nodes, G$rels) %>% 
+        visOptions(nodesIdSelection = TRUE)
         
     })
     
@@ -97,14 +99,15 @@ server <- function(input, output, session) {
     
     # update graph here
     observe({
-        
         # insertion
         if (length(input$companies) > length(store())) {
             
+            x <- setdiff(input$companies, store())
+            message(paste("+", x))
             store(input$companies)
-            message(paste("+", last(store())))
             
-            G <- get_graph_components(last(store()))
+            G <- get_graph_components(x)
+            
             visNetworkProxy("network") %>%
                 visUpdateNodes(nodes = G$nodes) %>%
                 visUpdateEdges(edges = G$rels)
@@ -114,19 +117,31 @@ server <- function(input, output, session) {
         if (length(input$companies) < length(store())) {
             
             x <- setdiff(store(), input$companies)
-            
-            # update list last
-            store(input$companies)
             message(paste("-", x))
+            store(input$companies)
             
             G <- remove_graph_components(x, store())
-
-            visNetworkProxy("network") %>%
-                 visRemoveNodes(id = G$nodes$id) %>%
-                 visRemoveEdges(id = G$nodes$id)
             
+            ind <- map_chr(input$network_edges, pluck("to")) == G$nodes$id[G$nodes$label == "Company"]
+            
+            visNetworkProxy("network") %>%
+                visRemoveNodes(id = G$nodes$id) %>% 
+                visRemoveEdges(id = names(map_chr(input$network_edges, pluck("id"))[ind]))
         }
         
+    })
+    
+    observe({
+        store()
+        visNetworkProxy("network") %>% visGetEdges()
+    })
+
+    
+    output$edges_data_from_shiny <- renderPrint({
+        if(!is.null(input$network_edges)){
+            input$network_edges
+            # map(input$network_edges, pluck("from"))
+        }
     })
     
     
