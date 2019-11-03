@@ -46,16 +46,25 @@ remove_graph_components <- function(x, nn) {
     
     others <- glue_collapse(nn, "','")
     
-    glue(
-        "WITH ['{others}'] as others
-        MATCH (c1:Company {{name:'{x}'}})<-[r:invests_in]-(i:Investor)
-        OPTIONAL MATCH (i)-[:invests_in]->(c2:Company)
-        WHERE c2.name in others
-        WITH i, c1, count(DISTINCT c1) + count(DISTINCT c2) as nod
-        WHERE nod = 1
-        RETURN i, nod, c1;"
-    ) %>% call_neo4j(con, type = "graph")
+    res <- 
+        glue(
+            "WITH ['{others}'] as others
+            MATCH (c1:Company {{name:'{x}'}})<-[r:invests_in]-(i:Investor)
+            OPTIONAL MATCH (i)-[:invests_in]->(c2:Company)
+            WHERE c2.name in others
+            WITH i, c1, count(DISTINCT c1) + count(DISTINCT c2) as nod
+            WHERE nod = 1
+            RETURN c1, i, nod;"
+        ) %>%
+        call_neo4j(con, type = "graph")
     
+    if(is_empty(res)) {
+        res <- 
+            glue("MATCH (c1:Company) WHERE c1.name = '{x}' RETURN c1") %>% 
+            call_neo4j(con, type = "graph")
+    }
+    # return
+    res
 }
 
 
