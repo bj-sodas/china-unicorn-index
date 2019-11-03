@@ -1,15 +1,21 @@
 library(tidyverse)
 library(shiny)
+library(config)
+library(httr)
 library(neo4r)
 library(visNetwork)
 library(glue)
 
+conf <- config::get()
+# check if database is running
+tryCatch(httr::GET(conf$url), 
+         error = function(e) {"Database not up"})
+
 con <- neo4j_api$new(
-    url = "http://localhost:7474",
-    user = "neo4j",
-    password = "1234"
+    url      = conf$url,
+    user     = conf$username,
+    password = conf$password
 )
-con$ping()
 
 get_graph_components <- function(x) {
     
