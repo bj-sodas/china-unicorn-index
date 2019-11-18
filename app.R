@@ -46,17 +46,19 @@ remove_graph_components <- function(x, nn) {
     
     others <- glue_collapse(nn, "','")
     
-    res <- 
-        glue(
+    suppressMessages(
+        res <- 
+            glue(
             "WITH ['{others}'] as others
-            MATCH (c1:Company {{name:'{x}'}})<-[r:invests_in]-(i:Investor)
-            OPTIONAL MATCH (i)-[:invests_in]->(c2:Company)
-            WHERE c2.name in others
-            WITH i, c1, count(DISTINCT c1) + count(DISTINCT c2) as nod
-            WHERE nod = 1
-            RETURN c1, i, nod;"
-        ) %>%
-        call_neo4j(con, type = "graph")
+                MATCH (c1:Company {{name:'{x}'}})<-[r:invests_in]-(i:Investor)
+                OPTIONAL MATCH (i)-[:invests_in]->(c2:Company)
+                WHERE c2.name in others
+                WITH i, c1, count(DISTINCT c1) + count(DISTINCT c2) as nod
+                WHERE nod = 1
+                RETURN c1, i, nod;"
+            ) %>%
+            call_neo4j(con, type = "graph")
+    )
     
     if(is_empty(res)) {
         res <- 
@@ -75,9 +77,7 @@ ui <- fluidPage(
     sidebarLayout(
         sidebarPanel(
             width = 4,
-            uiOutput("selection"),
-            hr(),
-            verbatimTextOutput("edges_data_from_shiny")
+            uiOutput("selection")
         ),
         mainPanel(
             width = 8,
@@ -135,7 +135,12 @@ server <- function(input, output, session) {
             message(paste("-", x))
             store(input$companies)
             
-            G <- remove_graph_components(x, store())
+            if (is.null(store())) {
+                # for the last node, else list is null returns nothing
+                G <- remove_graph_components(x, "蚂蚁金服")
+            } else {
+                G <- remove_graph_components(x, c(store(), "蚂蚁金服"))
+            }
             
             ind <- map_chr(input$network_edges, pluck("to")) == G$nodes$id[G$nodes$label == "Company"]
             
@@ -149,14 +154,6 @@ server <- function(input, output, session) {
     observe({
         store()
         visNetworkProxy("network") %>% visGetEdges()
-    })
-
-    
-    output$edges_data_from_shiny <- renderPrint({
-        if(!is.null(input$network_edges)){
-            input$network_edges
-            # map(input$network_edges, pluck("from"))
-        }
     })
     
     
