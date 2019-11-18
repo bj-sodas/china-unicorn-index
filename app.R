@@ -103,7 +103,7 @@ server <- function(input, output, session) {
     
     # initial graph
     output$network <- renderVisNetwork({
-        G <- get_graph_components("蚂蚁金服")
+        G <- get_graph_components(conf$inode)
         visNetwork(G$nodes, G$rels) %>% 
         visOptions(nodesIdSelection = TRUE)
         
@@ -137,9 +137,9 @@ server <- function(input, output, session) {
             
             if (is.null(store())) {
                 # for the last node, else list is null returns nothing
-                G <- remove_graph_components(x, "蚂蚁金服")
+                G <- remove_graph_components(x, conf$inode)
             } else {
-                G <- remove_graph_components(x, c(store(), "蚂蚁金服"))
+                G <- remove_graph_components(x, c(store(), conf$inode))
             }
             
             ind <- map_chr(input$network_edges, pluck("to")) == G$nodes$id[G$nodes$label == "Company"]
