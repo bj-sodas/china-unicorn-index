@@ -10,7 +10,7 @@ CREATE CONSTRAINT ON (i:Investor) ASSERT i.name IS UNIQUE;
 USING PERIODIC COMMIT
 LOAD CSV WITH HEADERS
 FROM "file:///china-unicorn-index/Data/companies.csv" AS line
-CREATE (comp:Company {name: line.company, ranking: TOINT(line.ranking), valuation: TOINT(line.valuation), key_person: line.key_person})
+CREATE (comp:Company {name: line.company, ranking: toInteger(line.ranking), valuation: toInteger(line.valuation), key_person: line.key_person})
 MERGE (ind:Industry {name: line.industry})
 MERGE (city:City {name: line.headquarter})
 CREATE (comp)-[:based_in]->(city)
