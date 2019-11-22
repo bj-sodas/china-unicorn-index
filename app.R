@@ -5,70 +5,7 @@ library(httr)
 library(neo4r)
 library(visNetwork)
 library(glue)
-
-conf <- config::get()
-# check if database is running
-tryCatch(httr::GET(conf$url), 
-         error = function(e) {"Database not up"})
-
-con <- neo4j_api$new(
-    url      = conf$url,
-    user     = conf$username,
-    password = conf$password
-)
-
-get_graph_components <- function(x) {
-    
-    query <-
-        glue("MATCH (c:Company)-[r:invests_in]-(i:Investor) 
-             WHERE c.name = '{x}' RETURN c, r, i;") %>%
-        call_neo4j(con, type = "graph")
-    
-    nodes <- 
-        unnest_nodes(query$nodes) %>%
-        mutate(
-            label = name,
-            color.background = if_else(value == "Company", "salmon", "lightblue")
-        ) %>% 
-        select(id, label, color.background)
-    
-    rels <- 
-        unnest_relationships(query$relationships) %>% 
-        select(from = startNode, to = endNode) %>% 
-        mutate(label = "")
-    
-    ## return 
-    list(nodes = nodes, rels = rels)
-}
-
-remove_graph_components <- function(x, nn) {
-    
-    
-    others <- glue_collapse(nn, "','")
-    
-    suppressMessages(
-        res <- 
-            glue(
-            "WITH ['{others}'] as others
-                MATCH (c1:Company {{name:'{x}'}})<-[r:invests_in]-(i:Investor)
-                OPTIONAL MATCH (i)-[:invests_in]->(c2:Company)
-                WHERE c2.name in others
-                WITH i, c1, count(DISTINCT c1) + count(DISTINCT c2) as nod
-                WHERE nod = 1
-                RETURN c1, i, nod;"
-            ) %>%
-            call_neo4j(con, type = "graph")
-    )
-    
-    if(is_empty(res)) {
-        res <- 
-            glue("MATCH (c1:Company) WHERE c1.name = '{x}' RETURN c1") %>% 
-            call_neo4j(con, type = "graph")
-    }
-    # return
-    res
-}
-
+source("global.R")
 
 ui <- fluidPage(
     
