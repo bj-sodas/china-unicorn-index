@@ -1,5 +1,6 @@
 library(tidyverse)
 library(shiny)
+library(shinydashboard)
 library(config)
 library(httr)
 library(neo4r)
@@ -7,21 +8,17 @@ library(visNetwork)
 library(glue)
 source("global.R")
 
-ui <- fluidPage(
-    
-    tags$h2("Hurun Chinese Unicorns"),
-    
-    sidebarLayout(
-        sidebarPanel(
-            width = 4,
-            uiOutput("selection")
-        ),
-        mainPanel(
-            width = 8,
-            visNetworkOutput("network", height = "1200px")
-        )
+
+ui <- dashboardPage(
+    skin = "black",
+    dashboardHeader(title = conf$title, titleWidth = "100%"),
+    dashboardSidebar(disable = TRUE),
+    dashboardBody(
+        tags$head(tags$style(".main-header .logo { text-align: left; font-weight: bolder; }
+                             .content { background: #fcfcfc }")), 
+        uiOutput("selection"),
+        visNetworkOutput("network", height = "650px")
     )
-    
 )
 
 server <- function(input, output, session) {
@@ -36,7 +33,7 @@ server <- function(input, output, session) {
             "companies", "Select one or more company:",
             # remove initial selection from choices
             choices = subset(companies, value != conf$inode),
-            multiple = TRUE
+            multiple = TRUE, width = "60%"
         )
     })
     
