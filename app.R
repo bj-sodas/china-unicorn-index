@@ -40,9 +40,14 @@ server <- function(input, output, session) {
     # initial graph
     output$network <- renderVisNetwork({
         G <- get_graph_components(conf$inode)
-        visNetwork(G$nodes, G$rels) %>% 
-        visOptions(nodesIdSelection = TRUE)
-        
+            visNetwork(G$nodes, G$rels) %>% 
+            visEdges(smooth = FALSE) %>% 
+            # display options goes here
+            visOptions(
+                nodesIdSelection = TRUE,
+                highlightNearest = TRUE,
+                collapse         = TRUE
+            )
     })
     
     # to make sure nodes and edges do not duplicate
