@@ -18,7 +18,6 @@ ui <- fluidPage(
         ),
         mainPanel(
             width = 8,
-            # tableOutput("text")
             visNetworkOutput("network", height = "1200px")
         )
     )
@@ -33,9 +32,12 @@ server <- function(input, output, session) {
             call_neo4j(con, type = "row") %>% 
             `[[`("c.name")
         
-        selectInput("companies", "Select one or more company:", 
-                    # remove default selection from choices
-                    choices = companies[-1, ], multiple = TRUE)
+        selectInput(
+            "companies", "Select one or more company:",
+            # remove initial selection from choices
+            choices = subset(companies, value != conf$inode),
+            multiple = TRUE
+        )
     })
     
     # initial graph
