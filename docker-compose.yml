@@ -1,0 +1,20 @@
+version: '3'
+services:
+  neo4j:
+      image: neo4j:3.5.13
+      ports:
+          - "7474:7474"
+          - "7687:7687"
+      volumes:
+          - $PWD/Graph/Data:/var/lib/neo4j/import
+          - $PWD/Graph/logs:/logs
+          - $PWD/Graph/graph.db:/var/lib/neo4j/data/databases/graph.db
+      environment:
+          - NEO4J_AUTH=neo4j/somepassword
+  webapp:
+      image: china-unicorn-index
+      build: .
+      ports:
+          - "3838:3838"
+      volumes:
+          - $PWD/config.yml:/srv/shiny-server/china-unicorn-index/config.yml
