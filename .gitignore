@@ -4,3 +4,4 @@
 .Ruserdata
 config.yml
 *logs
+Graph/graph.db
