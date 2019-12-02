@@ -6,7 +6,6 @@ library(testthat)
 source("global.R")
 
 conf <- config::get()
-
 # connect to database
 con <- neo4j_api$new(
     url      = conf$url,
@@ -15,11 +14,14 @@ con <- neo4j_api$new(
 )
 expect_equal(con$ping(), 200)
 
+X1 = "蚂蚁金服"
+X2 = "滴滴出行"
+
 # add node
-a <- get_graph_components("蚂蚁金服")
+a <- get_graph_components(X1)
 expect_equal(nrow(a$nodes), 4L)
 expect_equal(nrow(a$rels),  3L)
 
 # delete node
-b <- remove_graph_components("蚂蚁金服", list("滴滴出行"))
+b <- remove_graph_components(X1, list(X2))
 expect_equal(nrow(b$nodes), 3L)

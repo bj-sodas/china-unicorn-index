@@ -1,22 +1,26 @@
-## China Unicorn Index
+# China Unicorn Index
 
 ```
 #R #Shiny #Neo4j #Docker
 ```
 
-#### Background
+## Background
 
 An application built on `Shiny` which integrates with `Neo4j` graph database. Data is extracted from Hurun.net
 ([English](https://www.hurun.net/EN/HuList/Unilist?num=ZUDO23612EaU) |
 [Chinese](http://www.hurun.net/CN/HuList/Unilist?num=ZUDO23612EaU)),
 which published an index of China unicorns (company with more than 10 billions in valuation).
 
-The purpose of this exercise is to provide a demonstration of **connecting R to graph database**, and package exploratory tool into **viable data product**.
+The purpose of this exercise is to provide a demonstration of **connecting R to graph database**, and **packaging exploratory tool into a viable data product**.
+
+## Setup
 
 #### Build Docker Image
 
 ```bash
-docker build -t . china-unicorn-index .
+git clone https://github.com/bj-sodas/china-unicorn-index.git
+cd china-unicorn-index
+docker build -t china-unicorn-index .
 ```
 
 *Note: Replace [CRAN mirror url](https://cran.r-project.org/mirrors.html) with the one that is closest to you.*
@@ -34,14 +38,16 @@ default:
     inode:      # Initial node to display
 ```
 
-#### Run App ( with `Docker Compose` )
+## Running Application
 
-We will [define](docker-compose.yml) and run 2 services, one for our Neo4j database (named `neo4j`) and one for our Shiny app (named `webapp`).
+#### (I) Run App ( with `Docker Compose` )
+
+We will [define](docker-compose.yml) and run 2 services, one for our Neo4j database (named `neo4j-db`) and one for our Shiny app (named `webapp`).
 
 First we extract the database snapshot to `Graph` folder so that data can be pre-populated.
 
 ```bash
-tar -xvzf graph.db.tar.gz -C Graph
+tar -xvzf graph.data.tar.gz -C Graph
 ```
 
 Then we specify the configuration as the following,
@@ -49,7 +55,7 @@ Then we specify the configuration as the following,
 ```yaml
 default:
     title: China Unicorn Index
-    url: neo4j:7474
+    url: http://neo4j-db:7474 # docker will resolve address of neo4j
     username: neo4j
     password: somepassword
     inode: 蚂蚁金服
@@ -58,33 +64,35 @@ default:
 On command line run
 
 ```bash
-docker-compose up
+# make sure you are in 'china-unicorn-index' base directory
+docker-compose up -d
 ```
 
-Open your web browser and locate http://localhost:3838/china-unicorn-index.
+Open your web browser and locate http://localhost:33838/china-unicorn-index.
 
-#### Run App ( from local `runApp` )
+#### (II) Run App ( from local `runApp` )
 
-Start a [Neo4j Docker](https://hub.docker.com/_/neo4j) container with the following options,
+Start a [Neo4j Docker](https://hub.docker.com/_/neo4j) (named **neo4j-db**) container with the following options,
 
 * ports 7474 (HTTP) and 7687 (Bolt) exposed;
 * binds the import directory (so that we can import data through csv files);
 * create username (**neo4j**) and password (**somepassword**) for authentication;
 
 ```bash
+# make sure you are in 'china-unicorn-index' base directory
 docker run \
-    --name china-unicorn-index \
+    --name neo4j-db \
     -p7474:7474 -p7687:7687 \
     -d \
-    -v $PWD/Graph/Data:/var/lib/neo4j/import \
+    -v $PWD/Graph/import:/var/lib/neo4j/import \
     --env NEO4J_AUTH=neo4j/somepassword \
-    neo4j:3.5.13
+    neo4j:3.4.0
 ```
 
 With Docker up and running, we import our data by passing [queries](Graph/setup.cql) through `bin/cypher-shell`.
 
 ```bash
-cat Graph/setup.cql |  docker exec --interactive china-unicorn-index bin/cypher-shell -u neo4j -p somepassword
+cat Graph/setup.cql |  docker exec --interactive neo4j-db bin/cypher-shell -u neo4j -p somepassword
 ```
 
 Database is ready. Here we specify the configuration as the following,
@@ -92,7 +100,7 @@ Database is ready. Here we specify the configuration as the following,
 ```yaml
 default:
     title: China Unicorn Index
-    url: http://127.0.0.1:7474
+    url: http://127.0.0.1:7474 # neo4j is exposed to localhost
     username: neo4j
     password: somepassword
     inode: 蚂蚁金服
@@ -101,7 +109,7 @@ default:
 Run the application in `RStudio`, or on command line run
 
 ```bash
-R -e 'Shiny::runApp(host="127.0.0.1", port=33838)'
+R -e 'shiny::runApp(host="127.0.0.1", port=33838)'
 ```
 *Note: You must have required packages installed in your local station.*
 
