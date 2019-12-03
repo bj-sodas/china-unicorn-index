@@ -14,8 +14,8 @@ con <- neo4j_api$new(
 )
 expect_equal(con$ping(), 200)
 
-X1 = "蚂蚁金服"
-X2 = "滴滴出行"
+X1 = "Ant Financial"
+X2 = "Didi Chuxing"
 
 # add node
 a <- get_graph_components(X1)

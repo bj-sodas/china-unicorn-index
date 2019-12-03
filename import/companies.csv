@@ -1,0 +1,163 @@
+ranking,valuation,company,key_person,headquarter,industry
+1,1000,Ant Financial,Jing Xiandong,Hangzhou,Online finance
+2,300,Didi Chuxing,Cheng Wei,Beijing,Internet service
+2,300,Xiaomi,Lei Jun,Beijing,Intelligent hardware
+4,200,Toutiao,Zhang Yiming,Beijing,Entertainment
+4,200,Meituan Dianping,Wang Xing,Beijing,Internet service
+6,150,Tencent Music,Tang Daosheng,Shenzhen,Entertainment
+7,100,Cainiao,Tong Wenhong,Hangzhou,Logistics service
+7,100,DJI,Wang Tao,Shenzhen,Robot
+7,100,JD Finance,Chen Shengqiang,Beijing,Online finance
+7,100,Kuaishou,Su Hua,Beijing,Entertainment
+7,100,Lufax,Ji Kuisheng,Shanghai,Online finance
+12,80,JD Logistics,Wang Zhenhui,Beijing,Logistics service
+13,70,Bitmain,Wu Jihan,Beijing,Blockchain
+13,70,Pinduoduo,Huang Zheng,Shanghai,E-commerce
+15,50,Koubei,Fan Chi,Hangzhou,Internet service
+15,50,Ping An Healthcare Technology,Gao Jing,Shanghai,Medical treatment and health
+15,50,OneConnect,Ye Wangchun,Shanghai,Online finance
+18,40,Homelink,Zuo Hui,Beijing,Property service
+18,40,Manbang,Wang Gang,Guiyang,Logistics service
+18,40,UCAR,Lu Zhengyao,Tianjin,Internet service
+18,40,WeBank,Gu Min,Shenzhen,Online finance
+22,30,BJEV,Xu Heyi,Beijing,Motor traffic
+22,30,United Imaging,Xue Min,Shanghai,Medical treatment and health
+22,30,Meizu,Huang Zhang,Zhuhai,Intelligent hardware
+22,30,Royole,Liu Zihong,Shenzhen,Intelligent hardware
+22,30,SenseTime,Xu Li,Beijing,Artificial intelligence
+22,30,Suning Finance,Zhang Jindong,Nanjing,Online finance
+22,30,WM Motor,Shen Hui,Shanghai,Motor traffic
+22,30,We Doctor,Liao Jieyuan,Hangzhou,Medical treatment and health
+22,30,NextEV,Li Bin,Shanghai,Motor traffic
+22,30,Ubtech,Zhou Jian,Shenzhen,Robot
+32,20,Face++,Yin Qi,Beijing,Artificial intelligence
+32,20,ofo,Dai Wei,Beijing,Internet service
+32,20,VIPKID,Mi Wenjuan,Beijing,Online education
+32,20,Cars,Yang Haoyong,Beijing,Internet service
+32,20,Dadi Digital Cinema,Liu Rong,Shenzhen,Entertainment
+32,20,Douyu,Chen Shaojie,Wuhan,Entertainment
+32,20,Henlius,Liu Shigao,Shanghai,Medical treatment and health
+32,20,Huitongda,Xu Xiuxian,Nanjing,E-commerce
+32,20,Canaan,Zhang Nangeng,Hangzhou,Blockchain
+32,20,JiuXian,Hao Hongfeng,Beijing,E-commerce
+32,20,Maoyan,Wang Changtian,Beijing,Internet service
+32,20,Meicai,Liu Chuanjun,Beijing,E-commerce
+32,20,Meili,Chen Qi,Hangzhou,E-commerce
+32,20,Singulato,Shen Haiyin,Beijing,Internet service
+32,20,Tongcheng,Wu Zhixiang,Suzhou,Internet service
+32,20,Himalaya,Yu Jianjun,Shanghai,Entertainment
+32,20,Xiaohongshu,Mao Wenchao,Shanghai,E-commerce
+32,20,Yixia,Han Kun,Beijing,Internet service
+32,20,Yiguo,Jin Guanglei,Shanghai,E-commerce
+32,20,China UMS,Tian Lin,Shanghai,Online finance
+32,20,Ziroom,Zuo Hui,Beijing,Internet service
+53,10,APUS,Li Tao,Beijing,Internet service
+53,10,Pingpong,Chen Yu,Hangzhou,Online finance
+53,10,Aiways,Gu Feng,Shanghai,Motor traffic
+53,10,Byton,Bi Fukang,Nanjing,Motor traffic
+53,10,Babytree,Wang Huainan,Beijing,Internet service
+53,10,Caocao,Liu Jinliang,Hangzhou,Internet service
+53,10,CGTZ,Jin Zhongkao,Hangzhou,Online finance
+53,10,Chehejia,Xi Xiang,Beijing,Motor traffic
+53,10,Souche,Yao Junhong,Beijing,Internet service
+53,10,Hellobike,Yang Lei,Shanghai,Internet service
+53,10,Kidswant,Wang Jianguo,Nanjing,E-commerce
+53,10,Cambricon,Chen Tianshi,Beijing,Intelligent hardware
+53,10,Huimin,Zhang Yichun,Beijing,E-commerce
+53,10,Jiemian,He Li,Shanghai,Entertainment
+53,10,Ksyun,Wang Yulin,Beijing,Big data and cloud computing
+53,10,Lakala,Sun Taoran,Beijing,Online finance
+53,10,lvmama,Hong Qinghua,Shanghai,Internet service
+53,10,Mgtv,Zhang Yong,Changsha,Entertainment
+53,10,missfresh,Xu Zheng,Beijing,E-commerce
+53,10,Mia,Liu Nan,Beijing,E-commerce
+53,10,Jia,Deng Huajin,Shanghai,E-commerce
+53,10,Qutoutiao,Tan Siliang,Shanghai,Entertainment
+53,10,Suning Sports,Zhang Jindong,Nanjing,Entertainment
+53,10,Taobao Dianying,Yu Yongfu,Hangzhou,Internet service
+53,10,IMS,Li Meng,Beijing,Internet service
+53,10,Tujia,Luo Jun,Beijing,Internet service
+53,10,Tubatu,Wang Guobin,Shenzhen,Internet service
+53,10,TDW,Tang Jun,Dongguan,Online finance
+53,10,Weidian,Wang Ke,Beijing,E-commerce
+53,10,Whaley,Li Ruigang,Shanghai,Intelligent hardware
+53,10,Xiaopeng,He Xiaopeng,Guangzhou,Motor traffic
+53,10,Innovent Bio,Yu Dechao,Suzhou,Medical treatment and health
+53,10,YITU,Zhu Long,Shanghai,Artificial intelligence
+53,10,Ebang,Hu Dong,Hangzhou,Blockchain
+53,10,Hero Entertainment,Ying Shuling,Beijing,Games
+53,10,UrWork,Mao Daqing,Beijing,Internet service
+53,10,Cloudwalk,Zhou Xi,Guangzhou,Artificial intelligence
+53,10,Zhaogang,Wang Dong,Shanghai,E-commerce
+53,10,Zbj,Zhu Mingyue,Chongqing,Internet service
+92,8,Alisports,Zhang Yong,Shanghai,Entertainment
+92,8,Ane,Wang Yongjun,Shanghai,Logistics service
+92,8,New Dada,Kuai Jiaqi,Shanghai,Logistics service
+92,8,Fcbox,Wang Wei,Shenzhen,Logistics service
+92,8,Haodf,Wang Hang,Beijing,Medical treatment and health
+92,8,Huayun,Xu Guangbin,Wuxi,Big data and cloud computing
+92,8,Loji,Song Rui,Beijing,Logistics service
+92,8,Ninebot,Gao Lufeng,Tianjin,Intelligent hardware
+92,8,NetEase Music,Zhu Yiwen,Hangzhou,Entertainment
+92,8,Weidai,Yao Hong,Hangzhou,Online finance
+92,8,Easy Life,Liu Jiangtao,Beijing,Online finance
+92,8,ETCP,Tan Long,Beijing,Motor traffic
+104,7,U51,Sun Haitao,Hangzhou,Online finance
+104,7,Daojia,Yao Jinbo,Beijing,Internet service
+104,7,DotC United,Shi Yi,Shanghai,Internet service
+104,7,iTutorGroup,Yang Zhengda,Beijing,Online education
+104,7,Beibei,Zhang Lianglun,Hangzhou,E-commerce
+104,7,Chunyuyisheng,Li Guanghui,Beijing,Medical treatment and health
+104,7,Fanli,Ge Yongchang,Shanghai,E-commerce
+104,7,FangDD,Duan Yi,Shenzhen,Property service
+104,7,Hujiang,Fu Cairui,Shanghai,Online education
+104,7,Luojilab,Luo Zhenyu,Beijing,Entertainment
+104,7,Mofang,Ge Lan,Shanghai,Property service
+104,7,Novogene,Li Ruiqiang,Beijing,Medical treatment and health
+104,7,Renrendai,Yang Yifu,Beijing,Online finance
+104,7,Shouqi,Wei Dong,Beijing,Internet service
+104,7,Dtdream,Wu Jingzhuan,Hangzhou,Big data and cloud computing
+104,7,Icarbonx,Wang Jun,Guangzhou,Medical treatment and health
+104,7,TalkingData,Cui Xiaobo,Beijing,Big data and cloud computing
+104,7,Tuhu,Chen Min,Shanghai,Internet service
+104,7,WiFi Master key,Chen Danian,Shanghai,Internet service
+104,7,Youdao,Zhou Feng,Beijing,Internet service
+104,7,Womai,Zhang Dongfeng,Beijing,E-commerce
+104,7,yMatou,Zeng Bibo,Shanghai,E-commerce
+104,7,Yaochufa,Ding Genfang,Guangzhou,Internet service
+104,7,Inke,Feng Yousheng,Beijing,Entertainment
+104,7,Unisound,Liang Jia'en,Beijing,Big data and cloud computing
+104,7,Zhihu,Zhou Yuan,Beijing,Internet service
+130,6,V Linker,Zhou Junqiang,Shanghai,Property service
+130,6,Iwjw,Li Yongjin,Shanghai,Property service
+130,6,Orbbec,Huang Yuanhao,Shenzhen,Artificial intelligence
+130,6,Boqii,Tang Yingzhi,Shanghai,E-commerce
+130,6,Chemao,Huang Wei,Hangzhou,Internet service
+130,6,Cheyipai,Yang Xuejian,Beijing,E-commerce
+130,6,Chezhibao,Huang Le,Nanjing,Internet service
+130,6,Touchpal,Wang Jialiang,Shanghai,Internet service
+130,6,Dianrong,Su Haide,Shanghai,Online finance
+130,6,Dxy,Li Tiantian,Hangzhou,Internet service
+130,6,Fxiaoke,Luo Xu,Beijing,Internet service
+130,6,Futu,Li Hua,Shenzhen,Online finance
+130,6,Cstone,Jiang Ningjun,Suzhou,Medical treatment and health
+130,6,Geo,Cui Jingjing,Beijing,Big data and cloud computing
+130,6,9fgroup,Sun Lei,Beijing,Online finance
+130,6,Juanpi,Huang Chengsong,Guangzhou,E-commerce
+130,6,Lamabang,Jin Zan,Shenzhen,Internet service
+130,6,Renrenche,Li Jian,Beijing,Internet service
+130,6,Sinocelltech,Xie Liangzhi,Beijing,Medical treatment and health
+130,6,Tongdun,Jiang Tao,Hangzhou,Big data and cloud computing
+130,6,Weimob,Sun Taoyong,Shanghai,Internet service
+130,6,xiaozhu,Chen Chi,Beijing,Property service
+130,6,Yidianzixun,Li Ya,Beijing,Entertainment
+130,6,17zuoye,Liu Chang,Shanghai,Online education
+130,6,UCloud,Ji Xinhua,Shanghai,Big data and cloud computing
+130,6,Yooli,Wu Yiran,Beijing,Online finance
+130,6,Yuanfudao,Li Yong,Beijing,Online education
+130,6,YH Global,Zhang Quan,Shenzhen,Logistics service
+130,6,Yunniao,Han Yi,Beijing,Logistics service
+130,6,Jollycorp,Li Haiyan,Hangzhou,E-commerce
+130,6,Smartmi,Su Jun,Beijing,Intelligent hardware
+130,6,Zhuanzhuan,Yao Jinbo,Beijing,Internet service
+130,6,Zuoyebang,Hou Jianbin,Beijing,Online education

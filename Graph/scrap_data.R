@@ -5,7 +5,7 @@ library(rvest)
 
 # ggplot theme
 old <- theme_set(theme_tufte() + theme(text = element_text(family = 'Menlo')))
-url <- "http://www.hurun.net/CN/HuList/Unilist?num=ZUDO23612EaU"
+url <- "https://www.hurun.net/EN/HuList/Unilist?num=ZUDO23612EaU"
 
 # using Docker
 remDr <- remoteDriver(
@@ -72,13 +72,13 @@ companies <- raw_dat %>%
 # investors' list
 investors <- raw_dat %>% 
     select(company, investors) %>% 
-    separate(investors, into = paste0("c", 1:5), sep = "、", fill = "right") %>% 
+    separate(investors, into = paste0("c", 1:5), sep = ",", fill = "right") %>% 
     gather(ind, investor, -company, na.rm = TRUE) %>% 
     select(-ind)
 
 # export data
-write_csv(companies, "Data/companies.csv")
-write_csv(investors, "Data/investors.csv")
+write_csv(companies, "import/companies.csv")
+write_csv(investors, "import/investors.csv")
 
 
 # close Selenium driver

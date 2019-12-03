@@ -62,7 +62,7 @@ default:
     url: http://neo4j-db:7474 # docker will resolve address of neo4j
     username: neo4j
     password: somepassword
-    inode: 蚂蚁金服
+    inode: Ant Financial
 ```
 
 On command line run
@@ -88,7 +88,7 @@ docker run \
     --name neo4j-db \
     -p7474:7474 -p7687:7687 \
     -d \
-    -v $PWD/Graph/import:/var/lib/neo4j/import \
+    -v $PWD/import:/var/lib/neo4j/import \
     --env NEO4J_AUTH=neo4j/somepassword \
     neo4j:3.4.0
 ```
@@ -107,7 +107,7 @@ default:
     url: http://127.0.0.1:7474 # neo4j is exposed to localhost
     username: neo4j
     password: somepassword
-    inode: 蚂蚁金服
+    inode: Ant Financial
 ```
 
 Run the application in `RStudio`, or on command line run
