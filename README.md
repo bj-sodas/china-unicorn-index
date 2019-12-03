@@ -4,6 +4,8 @@
 #R #Shiny #Neo4j #Docker
 ```
 
+<img src="demo.gif" alt="drawing" width="480"/>
+
 ## Background
 
 An application built on `R` + `Shiny` which integrates with `Neo4j` graph database and shipped in `Docker`. Data is extracted from Hurun.net
@@ -116,3 +118,10 @@ R -e 'shiny::runApp(host="127.0.0.1", port=33838)'
 *Note: You must have required packages installed in your local station.*
 
 Open your web browser and locate http://localhost:33838.
+
+#### FAQ
+
+My application cannot start. It says `An error has occurred. Check your logs or contact the app author for clarification`.
+
+* Check your config file. Have you declared your url correctly?
+* Give `neo4j` some time to start up, and refresh your browser.

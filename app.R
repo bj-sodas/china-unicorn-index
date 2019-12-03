@@ -15,7 +15,7 @@ ui <- dashboardPage(
     dashboardSidebar(disable = TRUE),
     dashboardBody(
         tags$head(tags$style(".main-header .logo { text-align: left; font-weight: bolder; }
-                             .content { background: #fcfcfc }")), 
+                             .content { background: #fcfcfc; height: 800px; }")), 
         uiOutput("selection"),
         visNetworkOutput("network", height = "650px")
     )
