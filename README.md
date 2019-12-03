@@ -6,7 +6,7 @@
 
 ## Background
 
-An application built on `Shiny` which integrates with `Neo4j` graph database. Data is extracted from Hurun.net
+An application built on `R` + `Shiny` which integrates with `Neo4j` graph database and shipped in `Docker`. Data is extracted from Hurun.net
 ([English](https://www.hurun.net/EN/HuList/Unilist?num=ZUDO23612EaU) |
 [Chinese](http://www.hurun.net/CN/HuList/Unilist?num=ZUDO23612EaU)),
 which published an index of China unicorns (company with more than 10 billions in valuation).
@@ -39,6 +39,8 @@ default:
 ```
 
 ## Running Application
+
+The following provides 2 methods to run the application. Recommended way of doing it is through `docker-compose` ([method I](#i-run-app--with-docker-compose-)) as services are defined for you. Otherwise, you can choose to run the application separately ([method II](#ii-run-app--from-local-runapp-)).
 
 #### (I) Run App ( with `Docker Compose` )
 
