@@ -63,10 +63,11 @@ tbls <- map(1:length(pages), ~ {
 # Tidy Data ---- 
 
 raw_dat <- bind_rows(tbls)
-    
+
 # companies' list
 companies <- raw_dat %>% 
-    mutate(valuation = str_extract(valuation, "\\d+")) %>% 
+    mutate(valuation = str_extract(valuation, "\\d+"),
+           company   = str_remove(company, "^\\s|\\s$")) %>% 
     select(ranking:industry)
 
 # investors' list
@@ -74,7 +75,9 @@ investors <- raw_dat %>%
     select(company, investors) %>% 
     separate(investors, into = paste0("c", 1:5), sep = ",", fill = "right") %>% 
     gather(ind, investor, -company, na.rm = TRUE) %>% 
-    select(-ind)
+    select(-ind) %>% 
+    mutate(company   = str_remove(company, "^\\s|\\s$"),
+           investor  = str_remove(investor, "^\\s|\\s$"))
 
 # export data
 write_csv(companies, "import/companies.csv")
