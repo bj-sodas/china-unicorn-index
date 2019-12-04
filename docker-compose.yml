@@ -4,6 +4,7 @@ services:
       image: neo4j:3.4.0
       volumes:
           - $PWD/Graph/data:/var/lib/neo4j/data
+          - $PWD/import:/var/lib/neo4j/import
       environment:
           - NEO4J_AUTH=neo4j/somepassword
   webapp:
