@@ -1,0 +1,6 @@
+default:
+    title: China Unicorn Index
+    url: http://neo4j-db:7474
+    username: neo4j
+    password: somepassword
+    inode: Ant Financial

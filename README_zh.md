@@ -29,7 +29,7 @@ docker build -t china-unicorn-index .
 
 #### 配置
 
-为了帮助 `Shiny` 定位 `Neo4j` 数据库及认证信息，你需要在文件夹目录下生成一个名为 `config.yml` 的配置文件。
+为了帮助 `Shiny` 定位 `Neo4j` 数据库及认证信息，你需要在文件夹目录下生成一个名为 `config.yml` 的配置文件。这里附上了[配置文件样本](config.yml.sample)供你产考。
 
 ```yaml
 default:

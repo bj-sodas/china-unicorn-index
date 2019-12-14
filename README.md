@@ -31,7 +31,7 @@ docker build -t china-unicorn-index .
 
 #### Configuration
 
-We are required to create a config file named `config.yml` in your directory. It is used for Shiny app to locate Neo4j database and authentication information.
+We are required to create a config file named `config.yml` in your directory. It is used for Shiny app to locate Neo4j database and authentication information. A [sample](config.yml.sample) is provided in this repository.
 
 ```yaml
 default:
