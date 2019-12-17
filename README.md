@@ -24,10 +24,15 @@ The purpose of this exercise is to provide a demonstration of **connecting R to 
 ```bash
 git clone https://github.com/bj-sodas/china-unicorn-index.git
 cd china-unicorn-index
+## Note: Replace CRAN mirror url (https://cran.r-project.org/mirrors.html) with the one that is closest to you. ---
 docker build -t china-unicorn-index .
 ```
 
-*Note: Replace [CRAN mirror url](https://cran.r-project.org/mirrors.html) with the one that is closest to you.*
+Or pull image from Github package registry
+
+```bash
+docker pull docker.pkg.github.com/bj-sodas/china-unicorn-index/china-unicorn-index:latest
+```
 
 #### Configuration
 

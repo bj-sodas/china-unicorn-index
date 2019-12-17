@@ -22,10 +22,15 @@
 ```bash
 git clone https://github.com/bj-sodas/china-unicorn-index.git
 cd china-unicorn-index
+## 注：更换 CRAN mirror url (https://cran.r-project.org/mirrors.html) 为离你最近的地址以提高下载速度  ---
 docker build -t china-unicorn-index .
 ```
 
-*注: 更换 [CRAN mirror url](https://cran.r-project.org/mirrors.html) 为离你最近的地址以提高下载速度.*
+也可以选择从 Github 镜像仓直接下载
+
+```bash
+docker pull docker.pkg.github.com/bj-sodas/china-unicorn-index/china-unicorn-index:latest
+```
 
 #### 配置
 
