@@ -1,4 +1,6 @@
-**[English](README.md) | [中文](README_zh.md)**
+![Banner](banner.png)
+
+Language: **[ENG](README.md) 🇬🇧 | [中文](README_zh.md)** 🇨🇳
 
 # 中国独角兽指数
 
@@ -11,7 +13,7 @@
 ## 背景
 
 这是一个基于 `R` + `Shiny`、由 `Docker` 封装、 并融入 `Neo4j` 图形数据库的网页应用。
-数据来自胡润发布的大中华区独角兽指数（[英文](https://www.hurun.net/EN/HuList/Unilist?num=ZUDO23612EaU) |
+数据来自胡润报告发布的大中华区独角兽指数（[英文](https://www.hurun.net/EN/HuList/Unilist?num=ZUDO23612EaU) |
 [中文](http://www.hurun.net/CN/HuList/Unilist?num=ZUDO23612EaU)）。独角兽定义为估值在10亿美金以上的公司。
 这个练习的目的是提供一个 Demo 用来演示 **如何在R环境中连接图形数据库** 以及 **将EDA工具封装成数据产品**。
 

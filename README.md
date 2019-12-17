@@ -1,4 +1,6 @@
-**[English](README.md) | [中文](README_zh.md)**
+![Banner](banner.png)
+
+Language: **[ENG](README.md) 🇬🇧 | [中文](README_zh.md)** 🇨🇳
 
 # China Unicorn Index
 
@@ -10,7 +12,7 @@
 
 ## Background
 
-An application built on `R` + `Shiny` which integrates with `Neo4j` graph database and shipped in `Docker`. Data is extracted from Hurun.net
+An application built on `R` + `Shiny` which integrates with `Neo4j` graph database and shipped in `Docker`. Data is extracted from Hurun Report
 ([English](https://www.hurun.net/EN/HuList/Unilist?num=ZUDO23612EaU) |
 [Chinese](http://www.hurun.net/CN/HuList/Unilist?num=ZUDO23612EaU)),
 which published an index of China unicorns (company with more than 10 billions in valuation).
